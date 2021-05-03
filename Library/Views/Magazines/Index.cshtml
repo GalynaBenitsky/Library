@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Library.Models.Magazine>
+@{
+    ViewBag.Title = "Magazines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Magazines</h2>
+<p>
+<p>
+    @Html.ActionLink("New Magazine", "New", "Magazines", null, new { @class = "btn btn-secondary" })
+</p>
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-secondary">
+            <th>Magazine Title</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var magazine in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(magazine.Title, "Edit", "Magazines", new { id = magazine.Id }, null)</td>
+                <td>@magazine.desc</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
