@@ -12,11 +12,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-span .field-validation-error {
+span.field-validation-error {
     color: #ff7851;
 }
 
-.input-validation-error {
+span.input-validation-error {
     color: #ff7851;
     border: 2px solid #ff7851;
 }
@@ -104,12 +104,10 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
-  text-decoration-skip-ink: none;
+ 
 }
 
 address {
@@ -234,7 +232,7 @@ caption {
 
 th {
   text-align: inherit;
-  text-align: -webkit-match-parent;
+ 
 }
 
 label {
