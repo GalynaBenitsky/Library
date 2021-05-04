@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Library.Models;
@@ -9,7 +10,30 @@ namespace Library.ViewModel
     public class MagazineFormNewModel
     {
         public Magazine Magazine { get; set; }
-        public string Title
+        
+
+        public int? Id { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string Title { get; set; }
+
+
+        [Required]
+        [Display(Name = "Description")]
+
+        public string desc { get; set; }
+
+        [Display(Name = "Release Date")]
+        [Required]
+        public DateTime? ReleaseDate { get; set; }
+
+        [Display(Name = "Number in Stock")]
+        [Range(1, 20)]
+        [Required]
+        public byte? NumberInStock { get; set; }
+
+        public string Name
         {
             get
             {
@@ -18,6 +42,20 @@ namespace Library.ViewModel
 
                 return "New Magazine";
             }
+        }
+        public MagazineFormNewModel()
+        {
+            Id = 0;
+        }
+        public MagazineFormNewModel(Magazine magazine)
+        {
+            Id = magazine.Id;
+            Title = magazine.Title;
+            desc = magazine.desc;
+            ReleaseDate = magazine.ReleaseDate;
+            NumberInStock = magazine.NumberInStock;
+
+
         }
     }
 }

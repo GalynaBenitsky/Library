@@ -12,27 +12,27 @@
     <div calss="form-group">
         @Html.LabelFor(b => b.Book.Title)
         @Html.TextBoxFor(b => b.Book.Title, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Title)
+        @Html.ValidationMessageFor(b => b.Book.Title)
     </div>
     <div calss="form-group">
         @Html.LabelFor(b => b.Book.Author)
         @Html.TextBoxFor(b => b.Book.Author, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Author)
+        @Html.ValidationMessageFor(b => b.Book.Author)
     </div>
     <div calss="form-group">
         @Html.LabelFor(b => b.Book.Genre)
         @Html.TextBoxFor(b => b.Book.Genre, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Genre)
+        @Html.ValidationMessageFor(b => b.Book.Genre)
     </div>
     <div calss="form-group">
         @Html.LabelFor(b => b.Book.ReleaseDate)
         @Html.TextBoxFor(b => b.Book.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.ReleaseDate)
+        @Html.ValidationMessageFor(b => b.Book.ReleaseDate)
     </div>
     <div calss="form-group">
         @Html.LabelFor(b => b.Book.NumberInStock)
         @Html.TextBoxFor(b => b.Book.NumberInStock, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.NumberInStock)
+        @Html.ValidationMessageFor(b => b.Book.NumberInStock)
     </div>
     @Html.HiddenFor(b=>b.Book.Id)
     @Html.AntiForgeryToken()

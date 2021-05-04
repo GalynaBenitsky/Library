@@ -63,8 +63,15 @@ namespace Library.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Magazine magazine)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MagazineFormNewModel();
+                return View("MagazineForm", viewModel);
+
+            }
 
             if (magazine.Id == 0)
             {
