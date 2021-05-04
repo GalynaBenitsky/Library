@@ -1,0 +1,41 @@
+﻿@model Library.ViewModel.ReaderFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Reader</h2>
+
+@using (Html.BeginForm("Save", "Readers"))
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(r => r.Reader.Name)
+        @Html.TextBoxFor(r => r.Reader.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(r=> r.Reader.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(r => r.Reader.Birth)
+        @Html.TextBoxFor(r => r.Reader.Birth, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(r => r.Reader.Birth)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(r => r.Reader.MembershipTypeId)
+        @Html.DropDownListFor(r => r.Reader.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(r => r.Reader.MembershipTypeId)
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(r => r.Reader.IsSubcribe) Subscribe to Newsletter?
+        </label>
+    </div>
+
+    @Html.HiddenFor(r => r.Reader.Id)
+<div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</div>
+}
+
