@@ -7,7 +7,7 @@ using Library.Models;
 
 namespace Library.ViewModel
 {
-    public class MagazineFormNewModel
+    public class MagazineFormModel
     {
         public Magazine Magazine { get; set; }
         
@@ -43,11 +43,11 @@ namespace Library.ViewModel
                 return "New Magazine";
             }
         }
-        public MagazineFormNewModel()
+        public MagazineFormModel()
         {
             Id = 0;
         }
-        public MagazineFormNewModel(Magazine magazine)
+        public MagazineFormModel(Magazine magazine)
         {
             Id = magazine.Id;
             Title = magazine.Title;

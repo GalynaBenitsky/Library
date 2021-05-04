@@ -1,4 +1,4 @@
-﻿@model Library.ViewModel.ReaderFormViewModel
+﻿@model Library.ViewModel.ReaderFormModel
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Save", "Readers"))
 {
 
-    @Html.ValidationSummary(true, "Please fix the following errors.")
+   
     <div class="form-group">
         @Html.LabelFor(r => r.Reader.Name)
         @Html.TextBoxFor(r => r.Reader.Name, new { @class = "form-control" })

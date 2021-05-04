@@ -42,7 +42,7 @@ namespace Library.Controllers
         //-------------NEW------------
         public ActionResult New()
         {
-            var viewModel = new MagazineFormNewModel();
+            var viewModel = new MagazineFormModel();
 
             return View("MagazineForm", viewModel);
         }
@@ -54,7 +54,7 @@ namespace Library.Controllers
             if (magazine == null)
                 return HttpNotFound();
 
-            var viewModel = new MagazineFormNewModel
+            var viewModel = new MagazineFormModel
             {
                 Magazine = magazine
             };
@@ -68,7 +68,7 @@ namespace Library.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new MagazineFormNewModel();
+                var viewModel = new MagazineFormModel();
                 return View("MagazineForm", viewModel);
 
             }

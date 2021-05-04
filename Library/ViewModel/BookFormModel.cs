@@ -7,7 +7,7 @@ using Library.Models;
 
 namespace Library.ViewModel
 {
-    public class BookFormNewModel
+    public class BookFormModel
     {
         public Book Book { get; set; }
 
@@ -47,11 +47,11 @@ namespace Library.ViewModel
             }
         }
 
-        public BookFormNewModel()
+        public BookFormModel()
         {
             Id = 0;
         }
-        public BookFormNewModel(Book book)
+        public BookFormModel(Book book)
         {
             Id = book.Id;
             Title = book.Title;

@@ -43,7 +43,11 @@ namespace Library.Controllers
         //-------------NEW------------
         public ActionResult New()
         {
-            var viewModel = new BookFormNewModel();
+            var viewModel = new BookFormModel
+            {
+                Book = new Book()
+            };
+            
 
             return View("BookForm", viewModel);
         }
@@ -55,7 +59,7 @@ namespace Library.Controllers
             if (book == null)
                 return HttpNotFound();
 
-            var viewModel = new BookFormNewModel
+            var viewModel = new BookFormModel
             {
                 Book = book
             };
@@ -90,7 +94,7 @@ namespace Library.Controllers
         {
             if(!ModelState.IsValid)
             {
-                var viewModel = new BookFormNewModel();
+                var viewModel = new BookFormModel();
                 return View("BookForm", viewModel);
 
             }

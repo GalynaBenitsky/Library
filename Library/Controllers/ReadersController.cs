@@ -46,7 +46,7 @@ namespace Library.Controllers
         {
             var membershipTypes = _context.MembershipTypes.ToList();
 
-            var viewModel = new ReaderFormViewModel
+            var viewModel = new ReaderFormModel
             {
                 MembershipTypes = membershipTypes
             };
@@ -83,7 +83,7 @@ namespace Library.Controllers
             if (reader == null)
                 return HttpNotFound();
 
-            var viewModel = new ReaderFormViewModel
+            var viewModel = new ReaderFormModel
             {
                 Reader = reader,
                 MembershipTypes = _context.MembershipTypes.ToList()
