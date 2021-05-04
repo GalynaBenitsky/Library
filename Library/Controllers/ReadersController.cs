@@ -55,6 +55,7 @@ namespace Library.Controllers
 
         //---------SAVE--------
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Reader reader)
         {
             if(reader.Id == 0)
