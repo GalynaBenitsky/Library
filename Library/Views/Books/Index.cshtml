@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Library.Models.Book>
+@{
+    ViewBag.Title = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+<p>
+    @Html.ActionLink("New Book", "New", "Books", null, new {@class = "btn btn-secondary"})
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-secondary">
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(book.Title, "Edit", "Books", new { id = book.Id }, null)</td>
+            <td>@book.Author</td>
+            <td>@book.Genre</td>
+        </tr>
+        }
+    </tbody>
+</table>

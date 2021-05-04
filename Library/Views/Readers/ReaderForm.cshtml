@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm("Save", "Readers"))
 {
+<<<<<<< HEAD
     @Html.ValidationSummary()
     <div class="form-group">
         @Html.LabelFor(r => r.Reader.Name)
@@ -25,6 +26,21 @@
         @Html.LabelFor(r => r.Reader.MembershipTypeId)
         @Html.DropDownListFor(r => r.Reader.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
         @Html.ValidationMessageFor(r => r.Reader.MembershipTypeId)
+=======
+    <div class="form-group">
+        @Html.LabelFor(r => r.Reader.Name)
+        @Html.TextBoxFor(r => r.Reader.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Date of Birth</label>
+        @Html.TextBoxFor(r => r.Reader.Birth, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Membership Type</label>
+        @Html.DropDownListFor(r => r.Reader.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+>>>>>>> 8011bdefd43f15abf00c541bffa001f56ec48f00
     </div>
 
     <div class="checkbox">

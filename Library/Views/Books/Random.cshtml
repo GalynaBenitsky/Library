@@ -1,0 +1,24 @@
+﻿@model Library.ViewModel.RandomBookViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    var className = Model.Readers.Count > 0 ? "Popular" : null;
+}
+
+<h2 class="="@className>@Model.Book.Title</h2>
+<h3>@Model.Book.Author</h3>
+@if (Model.Readers.Count == 0)
+            {
+                <p>No one has read this book before.</p>
+            }
+            else
+            {
+                <ul>
+                    @foreach(var reader in Model.Readers)
+                {
+                    <li>@reader.Name</li>
+                }
+                </ul>
+            }

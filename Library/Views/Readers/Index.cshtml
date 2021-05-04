@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Library.Models.Reader>
+@{
+    ViewBag.Title = "Readers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Readers</h2>
+@if(!Model.Any())
+            {
+                <p>We don't have any reader yet</p>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr class="table-secondary">
+                            <th scope="col">Reader</th>
+                            <th scope="col">Memebership Type</th>
+                        </tr">
+                    </thead>
+                    <tbody>
+                        @foreach (var reader in Model)
+                {
+                    <tr>
+                        <td>@Html.ActionLink(reader.Name, "Edit", "Readers", new { id = reader.Id },null)</td>
+                        <td>@reader.MembershipType.Name</td>
+                    </tr>
+                }
+                    </tbody>
+                </table>
+            }
