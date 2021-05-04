@@ -85,8 +85,15 @@ namespace Library.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Book book)
         {
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new BookFormNewModel();
+                return View("BookForm", viewModel);
+
+            }
             
             if (book.Id == 0)
             {
