@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Library.Models;
+using Library.DTOs;
+using AutoMapper;
 
 namespace Library.Controllers.Api
 {
@@ -18,39 +20,43 @@ namespace Library.Controllers.Api
         }
 
         //GET /api/readers
-        public IEnumerable<Reader> GetReaders()
+        public IEnumerable<ReaderDto> GetReaders()
         {
-            return _context.Readers.ToList();
+            return _context.Readers.ToList().Select(Mapper.Map<Reader, ReaderDto>);
             
         }
 
         //GET /api/reader/1
-        public Reader GetReader(int id)
+        public ReaderDto GetReader(int id)
         {
             var reader = _context.Readers.SingleOrDefault(r => r.Id == id);
 
             if(reader == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-                return reader;
+                return Mapper.Map<Reader,ReaderDto>(reader) ;
         }
 
         //POST  /api/readers
         [HttpPost]
-        public Reader CreateReader(Reader reader)
+        public ReaderDto CreateReader(ReaderDto readerDto)
         {
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
+            var reader = Mapper.Map<ReaderDto, Reader>(readerDto);
 
             _context.Readers.Add(reader);
             _context.SaveChanges();
 
-            return reader;
+            readerDto.Id = reader.Id;
+
+            return readerDto;
         }
 
+        //PUT /api/reader/1
         [HttpPut]
-        public void UpdateReader(int id, Reader reader)
+        public void UpdateReader(int id, ReaderDto readerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -61,10 +67,8 @@ namespace Library.Controllers.Api
             if (readerInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            readerInDb.Name = reader.Name;
-            readerInDb.Birth = reader.Birth;
-            readerInDb.IsSubcribe = reader.IsSubcribe;
-            readerInDb.MembershipTypeId = reader.MembershipTypeId;
+
+            Mapper.Map(readerDto, readerInDb);
 
             _context.SaveChanges();
         }
