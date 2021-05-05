@@ -14,6 +14,7 @@ namespace Library.App_Start
         {
             Mapper.CreateMap<Reader, ReaderDto>();
             Mapper.CreateMap<Book, BookDto>();
+            Mapper.CreateMap<Magazine, MagazineDto>();
 
             //Dto to Domain
             Mapper.CreateMap<ReaderDto, Reader>()
@@ -21,6 +22,9 @@ namespace Library.App_Start
 
             Mapper.CreateMap<BookDto, Book>()
                 .ForMember(b => b.Id, opt => opt.Ignore());
+
+            Mapper.CreateMap<MagazineDto, Magazine>()
+                .ForMember(m => m.Id, opt => opt.Ignore());
         }
     }
 }
