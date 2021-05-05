@@ -11,12 +11,13 @@
             }
             else
             {
-                <table class="table">
+                <table id="readers" class="table">
                     <thead>
                         <tr class="table-secondary">
                             <th scope="col">Reader</th>
                             <th scope="col">Memebership Type</th>
-                        </tr">
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach (var reader in Model)
@@ -24,8 +25,48 @@
                     <tr>
                         <td>@Html.ActionLink(reader.Name, "Edit", "Readers", new { id = reader.Id },null)</td>
                         <td>@reader.MembershipType.Name</td>
+                        <td>
+                            <button data-reader-id="@reader.Id" type="button" class="btn btn-link js-delete"><i class="far fa-trash-alt"></i></button>
+                        </td>
                     </tr>
                 }
                     </tbody>
                 </table>
             }
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#readers .js-delete").on("click", function () {
+                var btn = $(this);
+
+                bootbox.confirm({
+                    message: "Are you sure you want to delete this reader?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function(result) {
+                        if(result) {
+                            $.ajax({
+                                url: "/api/readers/" + btn.attr("data-reader-id"),
+                                method: "DELETE",
+                                success: function() {
+                                    btn.parents("tr").remove();
+                                }
+                            });
+                        }
+                    }
+                });
+              
+            });
+        });
+    </script>
+}
