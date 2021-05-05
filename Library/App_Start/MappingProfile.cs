@@ -13,7 +13,14 @@ namespace Library.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Reader, ReaderDto>();
-            Mapper.CreateMap<ReaderDto, Reader>();
+            Mapper.CreateMap<Book, BookDto>();
+
+            //Dto to Domain
+            Mapper.CreateMap<ReaderDto, Reader>()
+                .ForMember(r => r.Id, opt => opt.Ignore());
+
+            Mapper.CreateMap<BookDto, Book>()
+                .ForMember(b => b.Id, opt => opt.Ignore());
         }
     }
 }

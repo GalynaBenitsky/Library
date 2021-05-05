@@ -39,10 +39,10 @@ namespace Library.Controllers.Api
 
         //POST  /api/readers
         [HttpPost]
-        public ReaderDto CreateReader(ReaderDto readerDto)
+        public IHttpActionResult CreateReader(ReaderDto readerDto)
         {
-            if(!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            if (!ModelState.IsValid)
+                return BadRequest();
 
             var reader = Mapper.Map<ReaderDto, Reader>(readerDto);
 
@@ -51,7 +51,7 @@ namespace Library.Controllers.Api
 
             readerDto.Id = reader.Id;
 
-            return readerDto;
+            return Created(new Uri(Request.RequestUri + "/" + reader.Id), readerDto);
         }
 
         //PUT /api/reader/1
