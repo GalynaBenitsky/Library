@@ -23,18 +23,18 @@ namespace Library.Controllers.Api
         public IEnumerable<ReaderDto> GetReaders()
         {
             return _context.Readers.ToList().Select(Mapper.Map<Reader, ReaderDto>);
-            
+
         }
 
         //GET /api/reader/1
-        public ReaderDto GetReader(int id)
+        public IHttpActionResult GetReaders(int id)
         {
-            var reader = _context.Readers.SingleOrDefault(r => r.Id == id);
+            var reader = _context.Readers.SingleOrDefault(b => b.Id == id);
 
-            if(reader == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (reader == null)
+                return NotFound();
 
-                return Mapper.Map<Reader,ReaderDto>(reader) ;
+            return Ok(Mapper.Map<Reader, ReaderDto>(reader));
         }
 
         //POST  /api/readers
@@ -56,34 +56,38 @@ namespace Library.Controllers.Api
 
         //PUT /api/reader/1
         [HttpPut]
-        public void UpdateReader(int id, ReaderDto readerDto)
+        public IHttpActionResult UpdateReader(int id, ReaderDto readerDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
-            var readerInDb = _context.Readers.SingleOrDefault(r => r.Id == id);
+            var readerInDb = _context.Readers.SingleOrDefault(b => b.Id == id);
 
 
             if (readerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
 
             Mapper.Map(readerDto, readerInDb);
 
             _context.SaveChanges();
+
+            return Ok();
         }
 
-         //DELETE /api/readers/1
-         [HttpDelete]
-        public void DeleteReader(int id)
+        //DELETE /api/readers/1
+        [HttpDelete]
+        public IHttpActionResult DeleteReader(int id)
         {
-            var readerInDb = _context.Readers.SingleOrDefault(r => r.Id == id);
+            var readerInDb = _context.Readers.SingleOrDefault(b => b.Id == id);
 
             if (readerInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             _context.Readers.Remove(readerInDb);
             _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
