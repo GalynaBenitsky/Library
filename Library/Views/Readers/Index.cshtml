@@ -5,40 +5,47 @@
 }
 
 <h2>Readers</h2>
-@if(!Model.Any())
-            {
-                <p>We don't have any reader yet</p>
-            }
-            else
-            {
-                <table id="readers" class="table">
-                    <thead>
-                        <tr class="table-secondary">
-                            <th scope="col">Reader</th>
-                            <th scope="col">Memebership Type</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var reader in Model)
-                {
-                    <tr>
-                        <td>@Html.ActionLink(reader.Name, "Edit", "Readers", new { id = reader.Id },null)</td>
-                        <td>@reader.MembershipType.Name</td>
-                        <td>
-                            <button data-reader-id="@reader.Id" type="button" class="btn btn-link js-delete"><i class="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                }
-                    </tbody>
-                </table>
-            }
+<table id="readers" class="table">
+    <thead>
+        <tr class="table-secondary">
+            <th scope="col">Reader</th>
+            <th scope="col">Memebership Type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
 @section scripts
 {
     <script>
         $(document).ready(function () {
-            $("#readers .js-delete").on("click", function () {
+            $("#readers").DataTable({
+                ajax: {
+                    url: "api/readers",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, reader) {
+                            return "<a href='/readers/edit/" + reader.id + "'>" + reader.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-link js-delete' data-reader-id=" + data + "><i class='far fa - trash - alt'></i></button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#readers").on("click", ".js-delete", function () {
                 var btn = $(this);
 
                 bootbox.confirm({
@@ -53,19 +60,19 @@
                             className: 'btn-danger'
                         }
                     },
-                    callback: function(result) {
-                        if(result) {
+                    callback: function (result) {
+                        if (result) {
                             $.ajax({
                                 url: "/api/readers/" + btn.attr("data-reader-id"),
                                 method: "DELETE",
-                                success: function() {
+                                success: function () {
                                     btn.parents("tr").remove();
                                 }
                             });
                         }
                     }
                 });
-              
+
             });
         });
     </script>

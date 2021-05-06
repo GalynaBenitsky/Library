@@ -28,8 +28,8 @@ namespace Library.Controllers
         public ActionResult Index()
 
         {
-            var readers = _context.Readers.Include(r=> r.MembershipType).ToList();
-            return View(readers);
+           
+            return View();
         }
 
         //-------DETAILS------------------
