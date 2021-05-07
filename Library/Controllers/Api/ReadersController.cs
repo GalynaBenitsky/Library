@@ -20,13 +20,14 @@ namespace Library.Controllers.Api
         }
 
         //GET /api/readers
-        public IEnumerable<ReaderDto> GetReaders()
+        public IHttpActionResult GetReaders()
         {
-            return _context.Readers.ToList().Select(Mapper.Map<Reader, ReaderDto>);
+            var readerDto = _context.Readers.ToList().Select(Mapper.Map<Reader, ReaderDto>);
+            return Ok(readerDto);
 
         }
 
-        //GET /api/reader/1
+        //GET /api/readers/1
         public IHttpActionResult GetReaders(int id)
         {
             var reader = _context.Readers.SingleOrDefault(b => b.Id == id);

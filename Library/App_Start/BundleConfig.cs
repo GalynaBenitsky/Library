@@ -12,7 +12,7 @@ namespace Library
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                       "~/Scripts/bootbox.js",
-                      "~/Scripts/DataTables/jquery.datatables.js",
+                      "~/Scripts/datatables/jquery.datatables.js",
                       "~/scripts/datatables/datatables.bootstrap4.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

@@ -24,6 +24,51 @@ namespace Library.Controllers
             _context.Dispose();
         }
 
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new ReaderFormModel
+            {
+                Reader = new Reader(),
+                MembershipTypes = membershipTypes
+            };
+
+            return View("ReaderForm", viewModel);
+        }
+
+
+        //---------SAVE--------
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Reader reader)
+        {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ReaderFormModel
+                {
+                    Reader = reader,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("ReaderForm", viewModel);
+            }
+
+            if (reader.Id == 0)
+                _context.Readers.Add(reader);
+            else
+            {
+                var readerInDb = _context.Readers.Single(r => r.Id == reader.Id);
+                readerInDb.Name = reader.Name;
+                readerInDb.Birth = reader.Birth;
+                readerInDb.MembershipTypeId = reader.MembershipTypeId;
+                readerInDb.IsSubcribe = reader.IsSubcribe;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Readers");
+        }
+
         //-------INDEX------------------
         public ActionResult Index()
 
@@ -53,28 +98,8 @@ namespace Library.Controllers
             return View("ReaderForm" ,viewModel);
         }
 
-        //---------SAVE--------
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Save(Reader reader)
-        {
-            if(reader.Id == 0)
-
-                _context.Readers.Add(reader);
-            else
-            {
-                var readerInDb = _context.Readers.Single(r => r.Id == reader.Id);
-
-                readerInDb.Name = reader.Name;
-                readerInDb.Birth = reader.Birth;
-                readerInDb.MembershipType = reader.MembershipType;
-                readerInDb.IsSubcribe = reader.IsSubcribe;
-
-            }
-            _context.SaveChanges();
-
-            return RedirectToAction("Index", "Readers");
-        }
+       
+        
 
         //------EDIT--------------
         public ActionResult Edit(int id )
