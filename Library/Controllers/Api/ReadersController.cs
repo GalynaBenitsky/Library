@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -22,7 +23,10 @@ namespace Library.Controllers.Api
         //GET /api/readers
         public IHttpActionResult GetReaders()
         {
-            var readerDto = _context.Readers.ToList().Select(Mapper.Map<Reader, ReaderDto>);
+            var readerDto = _context.Readers
+                .Include(r => r.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Reader, ReaderDto>);
             return Ok(readerDto);
 
         }

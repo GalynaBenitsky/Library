@@ -15,6 +15,7 @@ namespace Library.App_Start
             Mapper.CreateMap<Reader, ReaderDto>();
             Mapper.CreateMap<Book, BookDto>();
             Mapper.CreateMap<Magazine, MagazineDto>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
 
             //Dto to Domain
             Mapper.CreateMap<ReaderDto, Reader>()

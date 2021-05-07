@@ -16,6 +16,7 @@ namespace Library.DTOs
         public bool IsSubcribe { get; set; }
        
         public byte MembershipTypeId { get; set; }
+        public MembershipTypeDto MembershipType { get; set; }
        
         public DateTime? Birth { get; set; }
     }
