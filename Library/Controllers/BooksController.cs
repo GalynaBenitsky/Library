@@ -26,8 +26,8 @@ namespace Library.Controllers
         //-----------INDEX---------------------
         public ActionResult Index()
         {
-            var books = _context.Books.ToList();
-            return View(books);
+           
+            return View();
         }
 
 

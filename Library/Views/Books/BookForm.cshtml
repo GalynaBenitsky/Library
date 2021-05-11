@@ -10,29 +10,29 @@
 {
   
     <div calss="form-group">
-        @Html.LabelFor(b => b.Title)
-        @Html.TextBoxFor(b => b.Title, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Title)
+        @Html.LabelFor(b => b.Book.Title)
+        @Html.TextBoxFor(b => b.Book.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Book.Title)
     </div>
     <div calss="form-group">
-        @Html.LabelFor(b => b.Author)
-        @Html.TextBoxFor(b => b.Author, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Author)
+        @Html.LabelFor(b => b.Book.Author)
+        @Html.TextBoxFor(b => b.Book.Author, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Book.Author)
     </div>
     <div calss="form-group">
-        @Html.LabelFor(b => b.Genre)
-        @Html.TextBoxFor(b => b.Genre, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.Genre)
+        @Html.LabelFor(b => b.Book.Genre)
+        @Html.TextBoxFor(b => b.Book.Genre, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Book.Genre)
     </div>
     <div calss="form-group">
-        @Html.LabelFor(b => b.ReleaseDate)
-        @Html.TextBoxFor(b => b.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.ReleaseDate)
+        @Html.LabelFor(b => b.Book.ReleaseDate)
+        @Html.TextBoxFor(b => b.Book.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Book.ReleaseDate)
     </div>
     <div calss="form-group">
-        @Html.LabelFor(b => b.NumberInStock)
-        @Html.TextBoxFor(b => b.NumberInStock, new { @class = "form-control" })
-        @Html.ValidationMessageFor(b => b.NumberInStock)
+        @Html.LabelFor(b => b.Book.NumberInStock)
+        @Html.TextBoxFor(b => b.Book.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Book.NumberInStock)
     </div>
     @Html.HiddenFor(b => b.Book.Id)
     @Html.HiddenFor(b => b.Id)

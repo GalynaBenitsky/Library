@@ -6,24 +6,81 @@
 
 <h2>Books</h2>
 <p>
-    @Html.ActionLink("New Book", "New", "Books", null, new {@class = "btn btn-secondary"})
+    @Html.ActionLink("New Book", "New", "Books", null, new { @class = "btn btn-secondary" })
 </p>
-<table class="table">
+<table class="table" id="books">
     <thead>
         <tr class="table-secondary">
             <th>Book Title</th>
             <th>Author</th>
             <th>Genre</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var book in Model)
-        {
-        <tr>
-            <td>@Html.ActionLink(book.Title, "Edit", "Books", new { id = book.Id }, null)</td>
-            <td>@book.Author</td>
-            <td>@book.Genre</td>
-        </tr>
-        }
     </tbody>
 </table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#books").DataTable({
+                ajax: {
+                    url: "/api/books",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "title",
+                        render: function (data, type, book) {
+                            return "<a href='/books/edit/" + book.id + "'>" + book.title + "</a>";
+                        }
+                    },
+                    {
+                        data: "author"
+                    },
+                    {
+                        data: "genre"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-link js-delete' data-book-id=" + data + "><i class='far fa - trash - alt'></i>X</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#books").on("click", ".js-delete", function () {
+                var btn = $(this);
+
+                bootbox.confirm({
+                    message: "Are you sure you want to delete this book?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/books/" + btn.attr("data-book-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    table.row(btn.parents("tr")).remove().draw();
+                                }
+                            });
+                        }
+                    }
+                });
+
+            });
+        });
+    </script>
+}
