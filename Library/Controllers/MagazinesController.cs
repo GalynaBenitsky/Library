@@ -26,8 +26,8 @@ namespace Library.Controllers
         //-----INDEX------
         public ActionResult Index()
         {
-            var magazines = _context.Magazines.ToList();
-            return View(magazines);
+            
+            return View();
         }
 
         //-------DETAILS--------
@@ -54,10 +54,8 @@ namespace Library.Controllers
             if (magazine == null)
                 return HttpNotFound();
 
-            var viewModel = new MagazineFormModel
-            {
-                Magazine = magazine
-            };
+            var viewModel = new MagazineFormModel();
+           
 
             return View("MagazineForm", viewModel);
         }
@@ -83,12 +81,14 @@ namespace Library.Controllers
                 var magazineInDb = _context.Magazines.Single(m => m.Id == magazine.Id);
                 magazineInDb.Title = magazine.Title;
                 magazineInDb.desc = magazine.desc;
-                magazineInDb.NumberInStock = magazine.NumberInStock;
                 magazineInDb.ReleaseDate = magazine.ReleaseDate;
+                magazineInDb.NumberInStock = magazine.NumberInStock;
+               
             }
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Magazines");
         }
+
     }
 }

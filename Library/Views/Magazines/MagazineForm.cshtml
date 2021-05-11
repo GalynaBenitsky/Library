@@ -11,24 +11,24 @@
    
 
     <div calss="form-group">
-        @Html.LabelFor(m => m.Title)
-        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Title)
+        @Html.LabelFor(m => m.Magazine.Title)
+        @Html.TextBoxFor(m => m.Magazine.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Magazine.Title)
     </div>
     <div calss="form-group">
-        @Html.LabelFor(m => m.desc)
-        @Html.TextBoxFor(m => m.desc, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.desc)
+        @Html.LabelFor(m => m.Magazine.desc)
+        @Html.TextBoxFor(m => m.Magazine.desc, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Magazine.desc)
     </div>
     <div calss="form-group">
-        @Html.LabelFor(m => m.ReleaseDate)
-        @Html.TextBoxFor(m => m.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.ReleaseDate)
+        @Html.LabelFor(m => m.Magazine.ReleaseDate)
+        @Html.TextBoxFor(m => m.Magazine.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Magazine.ReleaseDate)
     </div>
     <div calss="form-group">
-        @Html.LabelFor(m => m.NumberInStock)
-        @Html.TextBoxFor(m => m.NumberInStock, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.NumberInStock)
+        @Html.LabelFor(m => m.Magazine.NumberInStock)
+        @Html.TextBoxFor(m => m.Magazine.NumberInStock, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Magazine.NumberInStock)
     </div>
     @Html.HiddenFor(m => m.Magazine.Id)
     @Html.HiddenFor(m => m.Id)
