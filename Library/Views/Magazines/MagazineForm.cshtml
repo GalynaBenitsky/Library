@@ -8,8 +8,6 @@
 
 @using (Html.BeginForm("Save", "Magazines"))
 {
-   
-
     <div calss="form-group">
         @Html.LabelFor(m => m.Magazine.Title)
         @Html.TextBoxFor(m => m.Magazine.Title, new { @class = "form-control" })

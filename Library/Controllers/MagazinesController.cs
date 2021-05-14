@@ -26,8 +26,10 @@ namespace Library.Controllers
         //-----INDEX------
         public ActionResult Index()
         {
-            
-            return View();
+            if (User.IsInRole(RoleName.CanManageMagazines))
+                return View("List");
+
+            return View("ReadOnlyList");
         }
 
         //-------DETAILS--------
@@ -40,6 +42,7 @@ namespace Library.Controllers
         }
 
         //-------------NEW------------
+        [Authorize(Roles = RoleName.CanManageMagazines)]
         public ActionResult New()
         {
             var viewModel = new MagazineFormModel();

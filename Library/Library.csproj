@@ -520,7 +520,7 @@
     <Content Include="Views\Books\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Magazines\Index.cshtml" />
+    <Content Include="Views\Magazines\List.cshtml" />
     <Content Include="Views\Books\List.cshtml" />
     <Content Include="Views\Readers\Index.cshtml" />
     <Content Include="Views\Readers\Details.cshtml" />
@@ -530,6 +530,7 @@
     <Content Include="Views\Books\BookForm.cshtml" />
     <Content Include="Views\Magazines\MagazineForm.cshtml" />
     <Content Include="Views\Books\ReadOnlyList.cshtml" />
+    <Content Include="Views\Magazines\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
