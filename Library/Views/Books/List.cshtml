@@ -25,6 +25,7 @@
 {
     <script>
         $(document).ready(function () {
+           
             var table = $("#books").DataTable({
                 ajax: {
                     url: "/api/books",
@@ -46,7 +47,7 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn btn-link js-delete' data-book-id=" + data + "><i class='far fa - trash - alt'></i>X</button>";
+                            return "<button class='btn btn-link js-delete' data-book-id=" + data + "><i class='far fa-trash-alt'></i></button>";
                         }
                     }
                 ]

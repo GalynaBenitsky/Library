@@ -26,8 +26,10 @@ namespace Library.Controllers
         //-----------INDEX---------------------
         public ActionResult Index()
         {
-           
-            return View();
+            if (User.IsInRole(RoleName.CanManageBooks))
+                return View("List");
+            
+            return View("ReadOnlyList");
         }
 
 
@@ -41,6 +43,7 @@ namespace Library.Controllers
         }
 
         //-------------NEW------------
+        [Authorize(Roles =RoleName.CanManageBooks)]
         public ActionResult New()
         {
             var viewModel = new BookFormModel

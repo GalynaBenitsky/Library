@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Library.Models.Book>
+@{
+    ViewBag.Title = "Books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Books</h2>
+
+<table class="table" id="books">
+    <thead>
+        <tr class="table-secondary">
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+           
+            var table = $("#books").DataTable({
+                ajax: {
+                    url: "/api/books",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "title",
+                       
+                    },
+                    {
+                        data: "author"
+                    },
+                    {
+                        data: "genre"
+                    },
+                    
+                ]
+            });
+  
+        });
+    </script>
+}
