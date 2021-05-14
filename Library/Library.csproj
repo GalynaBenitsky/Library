@@ -198,45 +198,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104231921034_InitialModel.cs" />
-    <Compile Include="Migrations\202104231921034_InitialModel.designer.cs">
-      <DependentUpon>202104231921034_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202105131951139_InitialModel.cs" />
+    <Compile Include="Migrations\202105131951139_InitialModel.designer.cs">
+      <DependentUpon>202105131951139_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104270057096_AddIsSubscribedToReader.cs" />
-    <Compile Include="Migrations\202104270057096_AddIsSubscribedToReader.designer.cs">
-      <DependentUpon>202104270057096_AddIsSubscribedToReader.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104270101484_AddMembershipType.cs" />
-    <Compile Include="Migrations\202104270101484_AddMembershipType.designer.cs">
-      <DependentUpon>202104270101484_AddMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104270104122_PopulateMembershipTypes.cs" />
-    <Compile Include="Migrations\202104270104122_PopulateMembershipTypes.designer.cs">
-      <DependentUpon>202104270104122_PopulateMembershipTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104271505162_ApplyAnnotationsToReaderName.cs" />
-    <Compile Include="Migrations\202104271505162_ApplyAnnotationsToReaderName.designer.cs">
-      <DependentUpon>202104271505162_ApplyAnnotationsToReaderName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104271558506_AddNameToMembershipType.cs" />
-    <Compile Include="Migrations\202104271558506_AddNameToMembershipType.designer.cs">
-      <DependentUpon>202104271558506_AddNameToMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104271601082_SetNameOfMemebershipType.cs" />
-    <Compile Include="Migrations\202104271601082_SetNameOfMemebershipType.designer.cs">
-      <DependentUpon>202104271601082_SetNameOfMemebershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104271608257_AddBirthToReader.cs" />
-    <Compile Include="Migrations\202104271608257_AddBirthToReader.designer.cs">
-      <DependentUpon>202104271608257_AddBirthToReader.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104271827209_AddBooksAndMagazines.cs" />
-    <Compile Include="Migrations\202104271827209_AddBooksAndMagazines.designer.cs">
-      <DependentUpon>202104271827209_AddBooksAndMagazines.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104271830082_AddMagazines.cs" />
-    <Compile Include="Migrations\202104271830082_AddMagazines.designer.cs">
-      <DependentUpon>202104271830082_AddMagazines.cs</DependentUpon>
+    <Compile Include="Migrations\202105132112289_SeedUsers.cs" />
+    <Compile Include="Migrations\202105132112289_SeedUsers.designer.cs">
+      <DependentUpon>202105132112289_SeedUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -578,35 +546,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202104231921034_InitialModel.resx">
-      <DependentUpon>202104231921034_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105131951139_InitialModel.resx">
+      <DependentUpon>202105131951139_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104270057096_AddIsSubscribedToReader.resx">
-      <DependentUpon>202104270057096_AddIsSubscribedToReader.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104270101484_AddMembershipType.resx">
-      <DependentUpon>202104270101484_AddMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104270104122_PopulateMembershipTypes.resx">
-      <DependentUpon>202104270104122_PopulateMembershipTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104271505162_ApplyAnnotationsToReaderName.resx">
-      <DependentUpon>202104271505162_ApplyAnnotationsToReaderName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104271558506_AddNameToMembershipType.resx">
-      <DependentUpon>202104271558506_AddNameToMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104271601082_SetNameOfMemebershipType.resx">
-      <DependentUpon>202104271601082_SetNameOfMemebershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104271608257_AddBirthToReader.resx">
-      <DependentUpon>202104271608257_AddBirthToReader.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104271827209_AddBooksAndMagazines.resx">
-      <DependentUpon>202104271827209_AddBooksAndMagazines.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104271830082_AddMagazines.resx">
-      <DependentUpon>202104271830082_AddMagazines.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105132112289_SeedUsers.resx">
+      <DependentUpon>202105132112289_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
