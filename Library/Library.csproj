@@ -200,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BooksController.cs" />
     <Compile Include="Controllers\Api\MagazinesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\Api\ReadersController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="DTOs\BookDto.cs" />
     <Compile Include="DTOs\MagazineDto.cs" />
     <Compile Include="DTOs\MembershipTypeDto.cs" />
+    <Compile Include="DTOs\NewRentalDto.cs" />
     <Compile Include="DTOs\ReaderDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -226,14 +228,24 @@
     <Compile Include="Migrations\202105171853118_AddPhoneToAppUser.designer.cs">
       <DependentUpon>202105171853118_AddPhoneToAppUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105311501556_AddNumberAvailableToBookAndMagazine.cs" />
+    <Compile Include="Migrations\202105311501556_AddNumberAvailableToBookAndMagazine.designer.cs">
+      <DependentUpon>202105311501556_AddNumberAvailableToBookAndMagazine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105311505000_AddRental.cs" />
+    <Compile Include="Migrations\202105311505000_AddRental.designer.cs">
+      <DependentUpon>202105311505000_AddRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Magazine.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Reader.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -554,6 +566,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\NewRentals\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -577,6 +590,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105171853118_AddPhoneToAppUser.resx">
       <DependentUpon>202105171853118_AddPhoneToAppUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105311501556_AddNumberAvailableToBookAndMagazine.resx">
+      <DependentUpon>202105311501556_AddNumberAvailableToBookAndMagazine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105311505000_AddRental.resx">
+      <DependentUpon>202105311505000_AddRental.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
