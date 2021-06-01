@@ -13,12 +13,12 @@ namespace Library.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202105311505000_AddRental"; }
+            get { return "202106011522150_AddRental"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

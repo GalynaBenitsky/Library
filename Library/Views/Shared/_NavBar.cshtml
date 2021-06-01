@@ -8,6 +8,9 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+                @Html.ActionLink("New Rental", "New", "Rental", new { area = "" }, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
                 @Html.ActionLink("Books", "Index", "Books", new { area = "" }, new { @class = "nav-link" })
             </li>
             <li class="nav-item">

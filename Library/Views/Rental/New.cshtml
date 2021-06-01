@@ -1,0 +1,54 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "New Rental Form";
+}
+
+<h2>New Rental Form</h2>
+
+
+<form>
+    <div class="form-group">
+        <label>Reader</label>
+        <div class="tt-container">
+        <input id="reader" name="reader" type="text" value="" class="form-control" />
+            </div>
+    </div>
+    <div class="form-group">
+        <label>Book or Magazine</label>
+        <input type="text" value="" class="form-control" />
+
+    </div>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            var vm = {};
+
+            var readers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                
+                remote: {
+                    url: '/api/readers?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#reader').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                limit: 50,
+                name: 'readers',
+                display: 'name',
+                source: readers
+            }).on("typeahead:select", function (e, reader) {
+                vm.readerId = reader.id;
+            });
+        })
+    </script>
+    }
+

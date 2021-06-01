@@ -29,7 +29,7 @@ namespace Library.Controllers.Api
             var magazines = _context.Magazines.Where(
                 m => newRental.MagazineId.Contains(m.Id)).ToList();
 
-            foreach (var book in books)
+            foreach (var book in books) 
             {
                 if (book.NumberAvailable == 0)
                     return BadRequest("Book is not available.");

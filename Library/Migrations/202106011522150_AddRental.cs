@@ -2,7 +2,7 @@
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class AddRental : DbMigration
     {
         public override void Up()
@@ -26,7 +26,7 @@
                 .Index(t => t.Book_Id)
                 .Index(t => t.Magazine_Id);
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Rentals", "Book_Id", "dbo.Books");

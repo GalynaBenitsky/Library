@@ -21,14 +21,19 @@ namespace Library.Controllers.Api
         }
 
         //GET /api/readers
-        public IHttpActionResult GetReaders()
+        public IHttpActionResult GetReaders(string query = null)
         {
-            var readerDto = _context.Readers
-                .Include(r => r.MembershipType)
+            var readerssQuery = _context.Readers
+                .Include(c => c.MembershipType);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                readerssQuery = readerssQuery.Where(r => r.Name.Contains(query));
+
+            var readerDto = readerssQuery
                 .ToList()
                 .Select(Mapper.Map<Reader, ReaderDto>);
-            return Ok(readerDto);
 
+            return Ok(readerDto);
         }
 
         //GET /api/readers/1
