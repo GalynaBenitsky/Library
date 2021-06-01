@@ -10,27 +10,45 @@
     <div class="form-group">
         <label>Reader</label>
         <div class="tt-container">
-        <input id="reader" name="reader" type="text" value="" class="form-control" />
+            <input id="reader" name="reader" type="text" value="" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label>Book</label>
+            <div class="tt-container">
+                <input id="book" name="book" type="text" value="" class="form-control" />
             </div>
-    </div>
-    <div class="form-group">
-        <label>Book or Magazine</label>
-        <input type="text" value="" class="form-control" />
 
+
+        </div>
+        <div class="col-md-1" style="text-align: left;">or</div>
+        <div class="form-group col-md-5">
+            <label>Magazines</label>
+            <div class="tt-container">
+                <input id="magazine" name="magazine" type="text" value="" class="form-control" />
+            </div>
+        </div>
     </div>
-    <button type="submit" class="btn btn-secondary">Submit</button>
+   
+   
+        
+        <button type="submit" class="btn btn-secondary">Submit</button>
 </form>
 @section scripts
 {
     <script>
         $(document).ready(function () {
 
-            var vm = {};
+            var vm = {
+
+            };
+
 
             var readers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
-                
+
                 remote: {
                     url: '/api/readers?query=%QUERY',
                     wildcard: '%QUERY'
@@ -48,6 +66,66 @@
             }).on("typeahead:select", function (e, reader) {
                 vm.readerId = reader.id;
             });
+        
+
+
+            var books = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+                remote: {
+                    url: '/api/books?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#book').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                limit: 20,
+                name: 'books',
+                display: 'title',
+                source: books
+            }).on("typeahead:select", function (e, book) {
+                vm.bookId = book.id;
+            });
+
+            var magazines = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+                remote: {
+                    url: '/api/magazines?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#magazine').typeahead({
+                minLength: 3,
+                highlight: true
+            }, {
+                limit: 20,
+                name: 'magazines',
+                display: 'title',
+                source: magazines
+            }).on("typeahead:select", function (e, magazine) {
+                vm.magazineId = magazine.id;
+            });
+        
+
+           /* $("#newRental").submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "/api/newRentals",
+                    method: "post",
+                    data: vm
+                })
+                    .done(function () {
+                        console.log("done");
+                    })
+                    .fail(function () {
+                    });*/
         })
     </script>
     }

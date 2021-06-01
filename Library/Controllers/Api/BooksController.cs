@@ -22,9 +22,17 @@ namespace Library.Controllers.Api
         }
 
         //GET /api/books
-        public IEnumerable<BookDto> GetBooks()
+        public IEnumerable<BookDto> GetBooks(string query = null)
         {
-            return _context.Books.ToList().Select(Mapper.Map<Book, BookDto>);
+            var bookQuery = _context.Books
+                 .Where(m => m.NumberAvailable > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                bookQuery = bookQuery.Where(m => m.Title.Contains(query));
+
+            return bookQuery
+                .ToList()
+                .Select(Mapper.Map<Book, BookDto>);
 
         }
 

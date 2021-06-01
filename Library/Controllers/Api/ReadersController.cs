@@ -23,13 +23,13 @@ namespace Library.Controllers.Api
         //GET /api/readers
         public IHttpActionResult GetReaders(string query = null)
         {
-            var readerssQuery = _context.Readers
+            var readersQuery = _context.Readers
                 .Include(c => c.MembershipType);
 
             if (!String.IsNullOrWhiteSpace(query))
-                readerssQuery = readerssQuery.Where(r => r.Name.Contains(query));
+                readersQuery = readersQuery.Where(r => r.Name.Contains(query));
 
-            var readerDto = readerssQuery
+            var readerDto = readersQuery
                 .ToList()
                 .Select(Mapper.Map<Reader, ReaderDto>);
 

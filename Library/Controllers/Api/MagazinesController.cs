@@ -19,10 +19,17 @@ namespace Library.Controllers.Api
         }
 
         //GET /api/magazines
-        public IEnumerable<MagazineDto> GetMagazines()
+        public IEnumerable<MagazineDto> GetMagazines(string query = null)
         {
-            return _context.Magazines.ToList().Select(Mapper.Map<Magazine, MagazineDto>);
+            var magazinesQuery = _context.Magazines
+                .Where(m => m.NumberAvailable > 0);
 
+            if (!String.IsNullOrWhiteSpace(query))
+                magazinesQuery = magazinesQuery.Where(m => m.Title.Contains(query));
+
+            return magazinesQuery
+                .ToList()
+                .Select(Mapper.Map<Magazine, MagazineDto>);
         }
 
         //GET /api/magazine/1
