@@ -41,7 +41,9 @@
         $(document).ready(function () {
 
             var vm = {
-
+                bookIds: [],
+                magazineIds:[]
+               
             };
 
 
@@ -88,7 +90,10 @@
                 display: 'title',
                 source: books
             }).on("typeahead:select", function (e, book) {
-                vm.bookId = book.id;
+                $("#books").append("<li>" + book.title + "</li>");
+                $("#book").typeahead("val", "");
+                vm.bookIds.push(book.id);
+                //vm.bookIds = book.id;
             });
 
             var magazines = new Bloodhound({
@@ -110,7 +115,10 @@
                 display: 'title',
                 source: magazines
             }).on("typeahead:select", function (e, magazine) {
-                vm.magazineId = magazine.id;
+                $("#magazines").append("<li>" + magazine.title + "</li>");
+                $("#magazine").typeahead("val", "");
+                vm.magazineIds.push(magazine.id);
+                //vm.magazineId = magazine.id;
             });
         
 
