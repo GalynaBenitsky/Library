@@ -30,9 +30,19 @@
             </div>
         </div>
     </div>
-   
-   
-        
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="books" class="list-group"></ul>
+        </div>
+    </div>
+       
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="magazines" class="list-group"></ul>
+        </div>
+    </div>
+       
+
         <button type="submit" class="btn btn-secondary">Submit</button>
 </form>
 @section scripts
@@ -90,7 +100,7 @@
                 display: 'title',
                 source: books
             }).on("typeahead:select", function (e, book) {
-                $("#books").append("<li>" + book.title + "</li>");
+                $("#books").append("<li class='list-group-item'>" + book.title + "</li>");
                 $("#book").typeahead("val", "");
                 vm.bookIds.push(book.id);
                 //vm.bookIds = book.id;
@@ -115,7 +125,7 @@
                 display: 'title',
                 source: magazines
             }).on("typeahead:select", function (e, magazine) {
-                $("#magazines").append("<li>" + magazine.title + "</li>");
+                $("#magazines").append("<li class='list-group-item'>" + magazine.title + "</li>");
                 $("#magazine").typeahead("val", "");
                 vm.magazineIds.push(magazine.id);
                 //vm.magazineId = magazine.id;
