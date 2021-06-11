@@ -17,7 +17,7 @@
         <div class="form-group col-md-3">
             <label>Book</label>
             <div class="tt-container">
-                <input id="book" name="book" type="text" value="" class="form-control" />
+                <input id="book" data-rule-atLeastOneBook="true"  name="book" type="text" value="" class="form-control" />
             </div>
         </div>
        
@@ -98,10 +98,13 @@
                 return vm.readerId && vm.readerId !== 0;
             }, "Please, select a valid reader");
 
-
+            $.validator.addMethod("atLeastOneBook", function () {
+                return vm.BookIds.length >0;
+            }, "Please, select at least one book");
+            
             $("#newRental").validate({
                 submitHandler: function () {
-                    e.preventDefault();
+                
                     $.ajax({
                         url: "/api/newRentals",
                         method: "post",
@@ -115,7 +118,7 @@
                         });
                 }
             });
-
+            return false;
             
         });
         
