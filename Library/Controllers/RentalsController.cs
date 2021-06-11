@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Library.Controllers
 {
-    public class RentalController : Controller
+    public class RentalsController : Controller
     {
         // GET: Rental
         public ActionResult New()

@@ -6,7 +6,7 @@
 <h2>New Rental Form</h2>
 
 
-<form>
+<form id="newRental">
     <div class="form-group">
         <label>Reader</label>
         <div class="tt-container">
@@ -22,13 +22,7 @@
 
 
         </div>
-        <div class="col-md-1" style="text-align: left;">or</div>
-        <div class="form-group col-md-5">
-            <label>Magazines</label>
-            <div class="tt-container">
-                <input id="magazine" name="magazine" type="text" value="" class="form-control" />
-            </div>
-        </div>
+       
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-4">
@@ -36,11 +30,7 @@
         </div>
     </div>
        
-    <div class="row">
-        <div class="col-md-4 col-sm-4">
-            <ul id="magazines" class="list-group"></ul>
-        </div>
-    </div>
+    
        
 
         <button type="submit" class="btn btn-secondary">Submit</button>
@@ -51,9 +41,9 @@
         $(document).ready(function () {
 
             var vm = {
-                bookIds: [],
-                magazineIds:[]
+                BookIds: [],
                
+
             };
 
 
@@ -78,7 +68,7 @@
             }).on("typeahead:select", function (e, reader) {
                 vm.readerId = reader.id;
             });
-        
+
 
 
             var books = new Bloodhound({
@@ -102,37 +92,13 @@
             }).on("typeahead:select", function (e, book) {
                 $("#books").append("<li class='list-group-item'>" + book.title + "</li>");
                 $("#book").typeahead("val", "");
-                vm.bookIds.push(book.id);
+                vm.BookIds.push(book.id);
                 //vm.bookIds = book.id;
             });
 
-            var magazines = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
 
-                remote: {
-                    url: '/api/magazines?query=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
 
-            $('#magazine').typeahead({
-                minLength: 3,
-                highlight: true
-            }, {
-                limit: 20,
-                name: 'magazines',
-                display: 'title',
-                source: magazines
-            }).on("typeahead:select", function (e, magazine) {
-                $("#magazines").append("<li class='list-group-item'>" + magazine.title + "</li>");
-                $("#magazine").typeahead("val", "");
-                vm.magazineIds.push(magazine.id);
-                //vm.magazineId = magazine.id;
-            });
-        
-
-           /* $("#newRental").submit(function (e) {
+            $("#newRental").submit(function (e) {
                 e.preventDefault();
                 $.ajax({
                     url: "/api/newRentals",
@@ -143,8 +109,10 @@
                         console.log("done");
                     })
                     .fail(function () {
-                    });*/
-        })
+                    });
+            });
+        });
+        
     </script>
     }
 

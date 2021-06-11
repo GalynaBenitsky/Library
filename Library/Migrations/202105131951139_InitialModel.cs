@@ -21,18 +21,6 @@
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "dbo.Magazines",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(nullable: false, maxLength: 255),
-                        desc = c.String(nullable: false),
-                        DateAdded = c.DateTime(nullable: false),
-                        ReleaseDate = c.DateTime(nullable: false),
-                        NumberInStock = c.Byte(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.MembershipTypes",
@@ -151,7 +139,6 @@
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Readers");
             DropTable("dbo.MembershipTypes");
-            DropTable("dbo.Magazines");
             DropTable("dbo.Books");
         }
     }

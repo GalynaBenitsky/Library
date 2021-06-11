@@ -10,13 +10,12 @@
             AddColumn("dbo.Books", "NumberAvailable", c => c.Byte(nullable: false));
             Sql("UPDATE Books SET NumberAvailable = NumberInStock");
 
-            AddColumn("dbo.Magazines", "NumberAvailable", c => c.Byte(nullable: false));
-            Sql("UPDATE Magazines SET NumberAvailable = NumberInStock");
+           
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Magazines", "NumberAvailable");
+           
             DropColumn("dbo.Books", "NumberAvailable");
         }
     }

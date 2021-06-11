@@ -24,10 +24,9 @@ namespace Library.Controllers.Api
                 r => r.Id == newRental.ReaderId);
 
             var books = _context.Books.Where(
-                b => newRental.BookId.Contains(b.Id)).ToList();
+                b => newRental.BookIds.Contains(b.Id)).ToList();
 
-            var magazines = _context.Magazines.Where(
-                m => newRental.MagazineId.Contains(m.Id)).ToList();
+        
 
             foreach (var book in books) 
             {
@@ -45,22 +44,7 @@ namespace Library.Controllers.Api
 
                 _context.Rentals.Add(rental);
             }
-            foreach (var magazine in magazines)
-            {
-                if (magazine.NumberAvailable == 0)
-                    return BadRequest("Magazine is not available.");
-
-                magazine.NumberAvailable--;
-
-                var rental = new Rental
-                {
-                    Reader = reader,
-                    Magazine = magazine,
-                    DateRented = DateTime.Now
-                };
-
-                _context.Rentals.Add(rental);
-            }
+           
 
             _context.SaveChanges();
 

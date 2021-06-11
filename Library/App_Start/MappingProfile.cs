@@ -13,8 +13,7 @@ namespace Library.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Reader, ReaderDto>();
-            Mapper.CreateMap<Book, BookDto>();
-            Mapper.CreateMap<Magazine, MagazineDto>();
+            Mapper.CreateMap<Book, Book>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
 
             //Dto to Domain
@@ -24,8 +23,6 @@ namespace Library.App_Start
             Mapper.CreateMap<BookDto, Book>()
                 .ForMember(b => b.Id, opt => opt.Ignore());
 
-            Mapper.CreateMap<MagazineDto, Magazine>()
-                .ForMember(m => m.Id, opt => opt.Ignore());
         }
     }
 }

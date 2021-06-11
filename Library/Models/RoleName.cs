@@ -8,6 +8,6 @@ namespace Library.Models
     public class RoleName
     {
         public const string CanManageBooks = "CanManageBooks";
-        public const string CanManageMagazines = "CanManageMagazines";
+       
     }
 }
