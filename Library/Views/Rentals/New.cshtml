@@ -41,10 +41,7 @@
 
             var vm = {
                 BookIds: [],
-               
-
             };
-
 
             var readers = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -67,8 +64,6 @@
             }).on("typeahead:select", function (e, reader) {
                 vm.readerId = reader.id;
             });
-
-
 
             var books = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
@@ -102,7 +97,7 @@
                 return vm.BookIds.length >0;
             }, "Please, select at least one book");
             
-            $("#newRental").validate({
+            var validator=$("#newRental").validate({
                 submitHandler: function () {
                 
                     $.ajax({
@@ -112,6 +107,12 @@
                     })
                         .done(function () {
                             toastr.success("Book successfully added to your account.");
+                            $("#reader").typeahead("val", "");
+                            $("#book").typeahead("val", "");
+                            $("#book").empty();
+
+                            vm = { BookIds: [] };
+                            validator.resetFotm();
                         })
                         .fail(function () {
                             toastr.error("Error occured");
