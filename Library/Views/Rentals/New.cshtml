@@ -10,7 +10,7 @@
     <div class="form-group">
         <label>Reader</label>
         <div class="tt-container">
-            <input id="reader" name="reader" type="text" value="" class="form-control" />
+            <input id="reader" data-rule-validReader="true" name="reader" required type="text" value="" class="form-control" />
         </div>
     </div>
     <div class="row">
@@ -19,8 +19,6 @@
             <div class="tt-container">
                 <input id="book" name="book" type="text" value="" class="form-control" />
             </div>
-
-
         </div>
        
     </div>
@@ -37,6 +35,7 @@
 </form>
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
 
@@ -95,23 +94,29 @@
                 vm.BookIds.push(book.id);
                 //vm.bookIds = book.id;
             });
+            $.validator.addMethod("validReader", function () {
+                return vm.readerId && vm.readerId !== 0;
+            }, "Please, select a valid reader");
 
 
-
-            $("#newRental").submit(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "/api/newRentals",
-                    method: "post",
-                    data: vm
-                })
-                    .done(function () {
-                        toastr.success("Book successfully added to your account.");
+            $("#newRental").validate({
+                submitHandler: function () {
+                    e.preventDefault();
+                    $.ajax({
+                        url: "/api/newRentals",
+                        method: "post",
+                        data: vm
                     })
-                    .fail(function () {
-                        toastr.error("Error occured");
-                    });
+                        .done(function () {
+                            toastr.success("Book successfully added to your account.");
+                        })
+                        .fail(function () {
+                            toastr.error("Error occured");
+                        });
+                }
             });
+
+            
         });
         
     </script>
