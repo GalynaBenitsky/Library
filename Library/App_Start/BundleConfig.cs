@@ -14,7 +14,8 @@ namespace Library
                       "~/Scripts/bootbox.js",
                       "~/Scripts/datatables/jquery.datatables.js",
                       "~/scripts/datatables/datatables.bootstrap4.js",
-                      "~/scripts/typeahead.bundle.js"));
+                      "~/scripts/typeahead.bundle.js",
+                      "~/scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -30,6 +31,7 @@ namespace Library
                       "~/Content/bootstrap-minty.css",
                       "~/Content/typeahead.css",
                       "~/Content/site.css",
+                      "~/Content/toastr.css",
                       "~/Content/datatables/css/datatables.bootstrap4.css"));
         }
     }

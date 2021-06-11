@@ -13,7 +13,8 @@ namespace Library.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Reader, ReaderDto>();
-            Mapper.CreateMap<Book, Book>();
+            Mapper.CreateMap<Book, BookDto>();
+   
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
 
             //Dto to Domain
